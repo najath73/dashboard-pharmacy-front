@@ -1,7 +1,18 @@
 import React from 'react';
 import { Box, Typography, Avatar } from '@mui/material';
+import { useAuth } from '../hooks/authContext';
 
 const SidebarUserPanel = () => {
+
+
+  const { user } = useAuth(); // Utiliser le contexte d'authentification
+
+  // Vérifier si l'utilisateur est connecté
+  if (!user) {
+    return null; // Ou afficher un message indiquant que l'utilisateur n'est pas connecté
+  }
+
+  const { username, avatar, roles } = user; // Extraire les informations de l'utilisateur
   return (
     <Box
       sx={{
@@ -21,13 +32,13 @@ const SidebarUserPanel = () => {
           mb: 2,
         }}
         alt="Nom de l'utilisateur"
-        src="/path/to/avatar.jpg" // Remplace par l'image de l'utilisateur
+        src={avatar || "https://avatar.iran.liara.run/public"} // Remplace par l'image de l'utilisateur
       />
       <Typography variant="h6" sx={{ color: '#fff' }}>
-        Nom de l'utilisateur
+        {username}
       </Typography>
       <Typography variant="body2" sx={{ color: '#B0BEC5' }}>
-        Rôle: Gestionnaire
+        Rôle: {roles}
       </Typography>
     </Box>
   );

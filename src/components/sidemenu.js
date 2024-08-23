@@ -26,7 +26,7 @@ const SideMenu = () => {
   return (
     <List>
       {/* Dashboard */}
-      <ListItem button onClick={() => handleNavigation('/pharmacy/:id/list-product')}>
+      <ListItem button onClick={() => handleNavigation('/pharmacy/list-product')}>
         <ListItemIcon>
           <DashboardIcon sx={{ color: '#4CAF50' }} />
         </ListItemIcon>
