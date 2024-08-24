@@ -10,15 +10,15 @@ import { useAuth } from '../hooks/authContext';
 const ProductList = () => {
   const [productInPharmacy, setProductInPharmacy] = useState([]);
   const navigate = useNavigate();
-  const { pharmacyId } = useParams(); // Récupère l'ID de la pharmacie depuis les paramètres de l'URL
   const { user } = useAuth(); // Utiliser le contexte d'authentification
   const token = localStorage.getItem('token');
+  const {pharmacy} = user
 
   useEffect(() => {
     // Fetch products from the server
     const fetchProductInPharmacy = async () => {
       try {
-        const {pharmacy} = user
+        
         const response = await api.get(`pharmacies/${pharmacy.id}/products`, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -26,24 +26,21 @@ const ProductList = () => {
         });
         setProductInPharmacy(response.data);
 
-        console.log(productInPharmacy)
       } catch (error) {
         console.error('Erreur lors du chargement des produits:', error);
       }
     };
 
     fetchProductInPharmacy();
-  }, [token, user]);
+  }, [productInPharmacy]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://back-pharmacie.onrender.com/pharmacies/${pharmacyId}/products/${id}`, {
+      await api.delete(`pharmacies/${pharmacy.id}/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      // Recharger la liste des produits après suppression
-      setProductInPharmacy(productInPharmacy.filter(productInPharmacy => productInPharmacy._id !== id));
     } catch (error) {
       console.error('Erreur lors de la suppression du produit:', error);
     }
@@ -70,10 +67,10 @@ const ProductList = () => {
                   />
                 </Grid>
                 <Grid item xs={4} container justifyContent="flex-end">
-                  <IconButton color="primary" onClick={() => handleEdit(productInPharmacy._id)}>
+                  <IconButton color="primary" onClick={() => handleEdit(productInPharmacy.product.id)}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton color="secondary" onClick={() => handleDelete(productInPharmacy._id)}>
+                  <IconButton color="secondary" onClick={() => handleDelete(productInPharmacy.product.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </Grid>
