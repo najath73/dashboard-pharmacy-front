@@ -47,7 +47,7 @@ const SideMenu = () => {
           <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/add-product')}>
             <ListItemText primary="Ajout d'un produit" sx={{ color: '#fff' }} />
           </ListItem>
-          <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/pharmacy/:id/list-product')}>
+          <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/pharmacy/list-product')}>
             <ListItemText primary="Liste des produits" sx={{ color: '#fff' }} />
           </ListItem>
         </List>
