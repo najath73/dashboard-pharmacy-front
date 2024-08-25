@@ -6,7 +6,9 @@ import LoginPage from './pages/loginPage';
 import PrivateRoute from './components/privateRoute';
 import UpdateProductPage from './pages/updateProductPage'
 import AddProductForm from './pages/addProductPage'
-
+import ListUserPage from './pages/listUserPage'
+import AddUserPage from './pages/addUserPaage'
+import UpdateUserPage from './pages/updateUserPage'
 
 const AppRoutes = ()=> {
     return (
@@ -16,6 +18,10 @@ const AppRoutes = ()=> {
             <Route path="/pharmacy/list-product" element= {< PrivateRoute element={<ProductList/>}/>}/>
             <Route path="/update-product/:id" element= {<PrivateRoute element={<UpdateProductPage/>} />}/>
             <Route path="/add-product" element= {<PrivateRoute element={<AddProductForm/>} />}/>
+            <Route path="/list-user" element= {<PrivateRoute element={<ListUserPage/>} />}/>
+            <Route path="/add-user" element= {<PrivateRoute element={<AddUserPage/>} />}/>
+            <Route path="/update-user/:id" element= {<PrivateRoute element={<UpdateUserPage/>} />}/>
+
 
         </Routes>
     );

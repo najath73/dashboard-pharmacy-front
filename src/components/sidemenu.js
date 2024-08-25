@@ -60,7 +60,7 @@ const SideMenu = () => {
         </ListItem>
         <Collapse in={openUsers} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/list-users')}>
+            <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/list-user')}>
               <ListItemText primary="Liste des utilisateurs" sx={{ color: '#fff' }} />
             </ListItem>
             <ListItem button sx={{ pl: 4 }} onClick={() => handleNavigation('/add-user')}>
