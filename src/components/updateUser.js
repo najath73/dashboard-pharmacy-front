@@ -22,7 +22,7 @@ const UpdateUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await api.get(`/pharmacies/${pharmacy.id}/users/${id}`);
+        const response = await api.get(`/users/${id}/`);
         const { username, name, firstname, email,roles } = response.data;
         setUserData({ username, name, firstname, email,roles });
       } catch (error) {
@@ -43,13 +43,13 @@ const UpdateUser = () => {
   const handleUpdate = async () => {
     try {
       const token = localStorage.getItem('token'); 
-      await api.patch(`https:/back-pharmacie.onrender.com/pharmacies/${pharmacy.id}/users/${id}`, userData, {
+      const response = await api.patch(`/users/${id}/`, userData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       console.log('Utilisateur mise à jour avec succès');
-      navigate('/user-list'); 
+      navigate('/list-user'); 
     } catch (error) {
       console.error('Erreur lors de la mise à jour de l\'utilisateur :', error);
     }
