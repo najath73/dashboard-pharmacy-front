@@ -9,6 +9,7 @@ import AddProductForm from './pages/addProductPage'
 import ListUserPage from './pages/listUserPage'
 import AddUserPage from './pages/addUserPaage'
 import UpdateUserPage from './pages/updateUserPage'
+import OrderListPage from './pages/listOrderPaje'
 
 const AppRoutes = ()=> {
     return (
@@ -21,6 +22,7 @@ const AppRoutes = ()=> {
             <Route path="/list-user" element= {<PrivateRoute element={<ListUserPage/>} />}/>
             <Route path="/add-user" element= {<PrivateRoute element={<AddUserPage/>} />}/>
             <Route path="/update-user/:id" element= {<PrivateRoute element={<UpdateUserPage/>} />}/>
+            <Route path="/list-order" element= {< PrivateRoute element={<OrderListPage/>}/>}/>
 
 
         </Routes>

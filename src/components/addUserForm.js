@@ -87,10 +87,10 @@ const AddUserForm = () => {
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "#35b2a3",
+              backgroundColor: "#007B7F",
               color: "#fff",
               '&:hover': {
-                backgroundColor: "#2f9a8e",
+                backgroundColor: "#006668",
               },
               mt: 3,
             }}

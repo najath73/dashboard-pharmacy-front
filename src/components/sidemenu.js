@@ -71,7 +71,7 @@ const SideMenu = () => {
       </List>
 
       {/* Commandes */}
-      <ListItem button onClick={() => handleNavigation('/orders')}>
+      <ListItem button onClick={() => handleNavigation('/list-order')}>
         <ListItemIcon>
           <PeopleIcon sx={{ color: '#4CAF50' }} />
         </ListItemIcon>
