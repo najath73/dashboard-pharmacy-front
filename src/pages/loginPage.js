@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../hooks/authContext';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Grid, Box, Alert } from '@mui/material';
+import { AuthorizationError } from '../utils/errors';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,12 @@ const LoginPage = () => {
       navigate('/'); // Redirection après login
     } catch (error) {
       console.error('Erreur lors de la connexion:', error);
-      setError('Nom d\'utilisateur ou mot de passe incorrect'); // Mettre à jour l'état d'erreur
+      // Gérer les erreurs en fonction de leur type
+      if (error instanceof AuthorizationError) {
+        setError(error.message);
+      } else {
+        setError(error.message || "Nom d'utilisateur ou mot de passe incorrect.");
+      }
     }
   };
 
