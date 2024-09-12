@@ -41,10 +41,10 @@ const OrderList = () => {
             <ListItem key={order.id}>
               <ListItemText
                 primary={`Commande de ${user.name} - ${new Date(order.date).toLocaleDateString()}`}
-                secondary={`Total Produits : ${order.producstInOrder.length}`}
+                secondary={`Total Produits : ${order.productsInOrder.length}`}
               />
               <List>
-                {order.producstInOrder.map((item, index) => (
+                {order.productsInOrder.map((item, index) => (
                   <ListItemText 
                     key={index} 
                     primary={`${item.product} (Quantité : ${item.quantity})`} 
