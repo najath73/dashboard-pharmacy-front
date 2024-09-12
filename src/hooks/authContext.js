@@ -46,10 +46,12 @@ export const AuthProvider = ({ children }) => {
       });
 
       const { access_token, role } = response.data;
-      if(role !== "pharmacy_manager" || role !== "pharmacy_worker"){
+
+      console.log("role: ")
+      console.log(role)
+      if(role !== "pharmacy_manager" && role !== "pharmacy_worker"){
         throw new AuthorizationError("Accès refusé : l'utilisateur n'a pas la permission.");
       }
-      
       // Enregistrer le token dans le localStorage
       localStorage.setItem('token', access_token);
       setUser({ token: access_token });
