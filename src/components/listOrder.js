@@ -15,7 +15,7 @@ const statusColors = {
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const { user } = useAuth();
-  const {pharmacy} = user
+  const { pharmacy } = user;
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -28,19 +28,29 @@ const OrderList = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [pharmacy.id]);
 
   return (
     <Container>
       <Box sx={{ marginTop: 15 }}>
-        <Typography variant="h5" sx={{ fontWeight: '300' }} gutterBottom>Liste des Commandes</Typography>
+        <Typography variant="h5" sx={{ fontWeight: '300' }} gutterBottom>
+          Liste des Commandes
+        </Typography>
         <List>
           {orders.map((order) => (
             <ListItem key={order.id}>
-              <ListItemText 
-                primary={`Produit #${order.user.name} - ${order.date}`}
-                secondary={`Pharmacie: ${order.pharmacy.name}, Total Produits: ${order.productsInOrder.length}`} 
+              <ListItemText
+                primary={`Commande de ${user.name} - ${new Date(order.date).toLocaleDateString()}`}
+                secondary={`Total Produits : ${order.producstInOrder.length}`}
               />
+              <List>
+                {order.producstInOrder.map((item, index) => (
+                  <ListItemText 
+                    key={index} 
+                    primary={`${item.product} (Quantité : ${item.quantity})`} 
+                  />
+                ))}
+              </List>
               <Chip
                 label={order.status}
                 sx={{ 
