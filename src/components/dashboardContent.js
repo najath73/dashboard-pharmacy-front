@@ -10,7 +10,7 @@ const ContentWrapper = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0', // Fond gris clair neutre
+        backgroundColor: '#f0f0f0', 
       }}
     >
       <Container maxWidth="lg">
@@ -20,8 +20,8 @@ const ContentWrapper = () => {
             padding: '40px',
             borderRadius: '15px',
             textAlign: 'center',
-            backgroundColor: '#fff', // Fond blanc pour la carte
-            boxShadow: '0 6px 18px rgba(0, 0, 0, 0.1)', // Ombre douce
+            backgroundColor: '#fff', 
+            boxShadow: '0 6px 18px rgba(0, 0, 0, 0.1)', 
           }}
         >
           <IconButton
