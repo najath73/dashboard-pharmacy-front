@@ -45,8 +45,11 @@ export const AuthProvider = ({ children }) => {
         },
       });
 
-      const { access_token, role } = response.data;
-      if(role !== "pharmacy_manager" || role !== "pharmacy_worker"){
+      const { access_token, roles } = response.data;
+
+      console.log("roles: ")
+      console.log(roles)
+      if(roles !== "pharmacy_manager" || roles !== "pharmacy_worker"){
         throw new AuthorizationError("Accès refusé : l'utilisateur n'a pas la permission.");
       }
       
