@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Box, Typography, Container, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import { useAuth } from '../hooks/authContext';
 
@@ -10,14 +10,14 @@ const AddProductForm = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const [productData, setProductData] = useState([]);
-  const [name, setName] = useState(''); // Initialisation avec une chaîne vide pour éviter les problèmes d'état non contrôlé
+  const [name, setName] = useState(''); 
   const { user } = useAuth();
 
   useEffect(() => {
     // Fetch products from the server
     const fetchProducts = async () => {
       try {
-        const response = await api.get('/products'); // Remplace par ton URL API
+        const response = await api.get('/products'); 
         setProductData(response.data);
       } catch (error) {
         console.error('Erreur lors du chargement des produits:', error);
@@ -55,7 +55,7 @@ const AddProductForm = () => {
         <FormControl fullWidth margin="normal">
           <InputLabel>Nom du produit</InputLabel>
           <Select
-            value={name || ''}  // S'assurer que `name` n'est jamais `undefined`
+            value={name || ''}  
             onChange={(e) => setName(e.target.value)}
             label="Nom"
           >
@@ -100,9 +100,9 @@ const AddProductForm = () => {
           variant="contained"
           sx={{
             mt: 3,
-            bgcolor: '#007B7F', // Bleu turquoise foncé
+            bgcolor: '#007B7F',
             '&:hover': {
-              bgcolor: '#006668', // Légèrement plus foncé au survol
+              bgcolor: '#006668', 
             },
           }}
         >
